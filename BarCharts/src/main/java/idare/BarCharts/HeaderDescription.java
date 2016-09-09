@@ -1,6 +1,6 @@
 package idare.BarCharts;
 
-import idare.imagenode.Data.BasicDataTypes.itemizedData.ItemDataDescription;
+import idare.imagenode.Data.BasicDataTypes.ArrayData.ArrayDataDescription;
 import idare.imagenode.Interfaces.DataSets.DataSet;
 import idare.imagenode.Interfaces.DataSets.NodeData;
 import idare.imagenode.Properties.IMAGENODEPROPERTIES;
@@ -15,7 +15,7 @@ import java.util.Vector;
 import javax.swing.JScrollPane;
 
 
-public class HeaderDescription extends ItemDataDescription {
+public class HeaderDescription extends ArrayDataDescription {
 	
 	/**
 	 * The SerialVersionUID of this Description

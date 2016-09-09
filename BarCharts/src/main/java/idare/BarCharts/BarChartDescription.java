@@ -1,8 +1,8 @@
 package idare.BarCharts;
 
-import idare.imagenode.Data.BasicDataTypes.ValueSetData.SetDataDescription;
-import idare.imagenode.Data.BasicDataTypes.ValueSetData.SetEntryDescriptionPane;
-import idare.imagenode.Data.BasicDataTypes.ValueSetData.SetEntryPanel;
+import idare.imagenode.Data.BasicDataTypes.MultiArrayData.MultiArrayDescription;
+import idare.imagenode.Data.BasicDataTypes.MultiArrayData.MultiArrayEntryDescriptionPane;
+import idare.imagenode.Data.BasicDataTypes.MultiArrayData.MultiArrayEntryPanel;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -16,7 +16,7 @@ import javax.swing.JScrollPane;
  *
  */
 
-public class BarChartDescription extends SetDataDescription{
+public class BarChartDescription extends MultiArrayDescription{
 	private static final long serialVersionUID = 1001;
 	/**
 	 * Create a new LineDataDescription, which is contained in a JScrollPane.
@@ -32,7 +32,7 @@ public class BarChartDescription extends SetDataDescription{
 	 * @author Thomas Pfau
 	 *
 	 */
-	private class BarDescriptionPane extends SetEntryDescriptionPane
+	private class BarDescriptionPane extends MultiArrayEntryDescriptionPane
 	{
 		private static final long serialVersionUID = 1001;
 		public BarDescriptionPane(Color barColor, String DescriptionString)
@@ -40,7 +40,7 @@ public class BarChartDescription extends SetDataDescription{
 			super(barColor,DescriptionString);
 		}
 		@Override
-		public SetEntryPanel getEntry(Color entrycolor) {
+		public MultiArrayEntryPanel getEntry(Color entrycolor) {
 			// TODO Auto-generated method stub
 			return new ColorPanel(entrycolor);
 		}
@@ -50,7 +50,7 @@ public class BarChartDescription extends SetDataDescription{
 	 * @author Thomas Pfau
 	 *
 	 */
-	private class ColorPanel extends SetEntryPanel
+	private class ColorPanel extends MultiArrayEntryPanel
 	{
 		private static final long serialVersionUID = 1001;
 		public ColorPanel(Color ShapeColor)
@@ -85,7 +85,7 @@ public class BarChartDescription extends SetDataDescription{
 	 * @see idare.imagenode.Data.BasicDataTypes.ValueSetData.SetDataDescription#getDescriptionPane(java.awt.Color, java.lang.String)
 	 */
 	@Override
-	public SetEntryDescriptionPane getDescriptionPane(Color color,
+	public MultiArrayEntryDescriptionPane getDescriptionPane(Color color,
 			String EntryName) {
 		// TODO Auto-generated method stub
 		return new BarDescriptionPane(color, EntryName);

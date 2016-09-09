@@ -1,11 +1,11 @@
 package idare.BarCharts;
 
 import idare.imagenode.ColorManagement.ColorMap;
-import idare.imagenode.Data.BasicDataTypes.ValueSetData.ValueSetDataSet;
-import idare.imagenode.Data.BasicDataTypes.ValueSetData.ValueSetDataValue;
-import idare.imagenode.Data.BasicDataTypes.ValueSetData.ValueSetNodeData;
-import idare.imagenode.Data.BasicDataTypes.itemizedData.ItemDataSet;
-import idare.imagenode.Data.BasicDataTypes.itemizedData.ItemNodeData;
+import idare.imagenode.Data.BasicDataTypes.ArrayData.ArrayDataSet;
+import idare.imagenode.Data.BasicDataTypes.ArrayData.ArrayNodeData;
+import idare.imagenode.Data.BasicDataTypes.MultiArrayData.MultiArrayDataSet;
+import idare.imagenode.Data.BasicDataTypes.MultiArrayData.MultiArrayDataValue;
+import idare.imagenode.Data.BasicDataTypes.MultiArrayData.MultiArrayNodeData;
 import idare.imagenode.Interfaces.DataSets.DataSet;
 import idare.imagenode.Interfaces.DataSets.NodeData;
 import idare.imagenode.Interfaces.Layout.ContainerLayout;
@@ -153,16 +153,16 @@ public class BarChartContainerLayout extends ContainerLayout {
 		 
 		 Double[] valuerange;
 		 
-		 if(dataset instanceof ValueSetDataSet)
+		 if(dataset instanceof MultiArrayDataSet)
 		 {
-			 ValueSetDataSet valset = (ValueSetDataSet)dataset;
+			 MultiArrayDataSet valset = (MultiArrayDataSet)dataset;
 			 sheetPos = valset.getSetNames();
 		 	 
 		 }
-		 if(dataset instanceof ItemDataSet)
+		 if(dataset instanceof ArrayDataSet)
 		 {
 			 sheetPos = new Vector<String>();
-			 sheetPos.add(ItemDataSet.DEFAULT_SERIES_NAME);
+			 sheetPos.add(ArrayDataSet.DEFAULT_SERIES_NAME);
 		 }
 		 valuerange = dataset.getYAxisLimits();
 		 Double[] displayrange = determineDisplayRange(valuerange);
@@ -192,7 +192,7 @@ public class BarChartContainerLayout extends ContainerLayout {
 		 //For each header, we get an associated position on the x axis, in such a way, that we can build the bar groups.
 		 for(Comparable header : headers)
 		 {
-			 System.out.println("Setting position for header " + header.toString() + " to " + (middleofoneplot + i*placeforoneplot));
+//			 System.out.println("Setting position for header " + header.toString() + " to " + (middleofoneplot + i*placeforoneplot));
 			 itemxPositions.put(header,new LabelAndPosition(middleofoneplot + i * placeforoneplot, HeaderLabels.get(header)));
 			 i++;
 		 }
@@ -414,7 +414,7 @@ public class BarChartContainerLayout extends ContainerLayout {
 		 g2d.setStroke(new BasicStroke(1));
 		 //move to the plotting area
 		 g2d.translate(area.getX(), area.getY());
-		 System.out.println("Translating to " + area.getX() + "/" + area.getY());
+//		 System.out.println("Translating to " + area.getX() + "/" + area.getY());
 		 for(String name : sheetPos)
 		 {
 			 
@@ -422,21 +422,21 @@ public class BarChartContainerLayout extends ContainerLayout {
 			 Vector<Double> LineYValues = new Vector<Double>(); 
 			 Vector<Comparable> lineHeaders = new Vector<Comparable>();
 			 //if we have a ValueSetDataSet its rather easy.
-			 if(data instanceof ValueSetNodeData)
+			 if(data instanceof MultiArrayNodeData)
 			 {
-				 ValueSetNodeData nd = (ValueSetNodeData) data;
-				 ValueSetDataValue vsd = nd.getData(name);
+				 MultiArrayNodeData nd = (MultiArrayNodeData) data;
+				 MultiArrayDataValue vsd = nd.getData(name);
 				 if(vsd != null)
 				 {
 					 LineYValues = vsd.getEntryData();
 					 linecolor = colors.getColor(name);
-					 lineHeaders = ((ValueSetDataSet)data.getDataSet()).getHeadersForSheet(name);				 				 
+					 lineHeaders = ((MultiArrayDataSet)data.getDataSet()).getHeadersForSheet(name);				 				 
 				 }	
 			 }
 			 //if it is an Item Dataset, we have to select a color, so we use the default color of the map.
-			 if(data instanceof ItemNodeData)
+			 if(data instanceof ArrayNodeData)
 			 {
-				 ItemNodeData itemdata = (ItemNodeData)data;
+				 ArrayNodeData itemdata = (ArrayNodeData)data;
 				 LineYValues = new Vector<Double>();
 				 lineHeaders = itemdata.getDataSet().getHeaders();
 				 for(int i = 0; i < itemdata.getValueCount(); i++)

@@ -3,7 +3,7 @@ package idare.BarCharts.internal;
 import idare.BarCharts.BarChartProperties;
 import idare.imagenode.IDAREImageNodeAppService;
 import idare.imagenode.Interfaces.Plugin.IDAREPlugin;
-import idare.imagenode.Interfaces.Plugin.IDAREService;
+import idare.imagenode.internal.IDAREService;
 
 import java.util.Vector;
 

@@ -1,8 +1,8 @@
 package idare.BarCharts;
 
 import idare.imagenode.ColorManagement.ColorMap;
-import idare.imagenode.Data.BasicDataTypes.ValueSetData.ValueSetDataSet;
-import idare.imagenode.Data.BasicDataTypes.itemizedData.ItemDataSet;
+import idare.imagenode.Data.BasicDataTypes.ArrayData.ArrayDataSet;
+import idare.imagenode.Data.BasicDataTypes.MultiArrayData.MultiArrayDataSet;
 import idare.imagenode.GUI.Legend.Utilities.TextPaneResizer;
 import idare.imagenode.Interfaces.DataSets.DataContainer;
 import idare.imagenode.Interfaces.DataSets.DataSet;
@@ -94,8 +94,8 @@ public class BarChartProperties extends DataSetLayoutProperties {
 		//Either ValueSetDataSet or ItemDataSet are allowed to be used with these properties.
 		//And they should not have too many bars, so that each bar gets a minimum size.
 		try{
-			ValueSetDataSet vds = (ValueSetDataSet) set;
-			System.out.println("There are " + vds.getHeaders().size() + " headers and " + vds.getSetNames().size() + " different sets.");
+			MultiArrayDataSet vds = (MultiArrayDataSet) set;
+//			System.out.println("There are " + vds.getHeaders().size() + " headers and " + vds.getSetNames().size() + " different sets.");
 			if(5 * (vds.getHeaders().size() + 2) * vds.getSetNames().size() > 180)
 			{
 				throw new WrongFormat("Too many bars to plot for a BarChart");
@@ -114,7 +114,7 @@ public class BarChartProperties extends DataSetLayoutProperties {
 		{
 			try{
 				//the cast is mainly to test if this is indeed an itemDataSet
-				ItemDataSet itemDS = (ItemDataSet) set;
+				ArrayDataSet itemDS = (ArrayDataSet) set;
 				if(!itemDS.isnumeric)
 				{
 					throw new WrongFormat("Only numeric sets allowed for BarChart!");
@@ -177,8 +177,8 @@ public class BarChartProperties extends DataSetLayoutProperties {
 	@Override
 	public Collection<Class<? extends DataSet>> getWorkingClassTypes() {
 		Vector<Class<? extends DataSet>> acceptableclasses = new Vector<Class<? extends DataSet>>();
-		acceptableclasses.add(ValueSetDataSet.class);
-		acceptableclasses.add(ItemDataSet.class);
+		acceptableclasses.add(MultiArrayDataSet.class);
+		acceptableclasses.add(ArrayDataSet.class);
 		return acceptableclasses;
 	}
 
