@@ -50,15 +50,7 @@ public class BarChartContainer implements  DataContainer {
 	public Rectangle getMinimalSize() {		
 		return new Rectangle(new Dimension(minwidth,minheight));
 	}
-	/*
-	 * (non-Javadoc)
-	 * @see idare.imagenode.Interfaces.DataSets.DataContainer#getLocalisationPreference()
-	 */
-	@Override
-	public Localisation getLocalisationPreference() {		
-		// TODO Auto-generated method stub
-		return loc;		
-	}
+
 	/*
 	 * (non-Javadoc)
 	 * @see idare.imagenode.Interfaces.DataSets.DataContainer#getDataSet()

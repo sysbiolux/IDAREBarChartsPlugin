@@ -9,6 +9,7 @@ import idare.imagenode.Data.BasicDataTypes.MultiArrayData.MultiArrayNodeData;
 import idare.imagenode.Interfaces.DataSets.DataSet;
 import idare.imagenode.Interfaces.DataSets.NodeData;
 import idare.imagenode.Interfaces.Layout.ContainerLayout;
+import idare.imagenode.Interfaces.Layout.DataSetLayoutProperties;
 import idare.imagenode.Utilities.LayoutUtils;
 import idare.imagenode.Utilities.LegendLabel;
 
@@ -144,7 +145,7 @@ public class BarChartContainerLayout extends ContainerLayout {
 		 // TODO Auto-generated constructor stub
 	 }
 	 @Override	
-	 public void createLayout(NodeData data, Rectangle area, String DataSetLabel) {
+	 public void setupLayout(NodeData data, Rectangle area, String DataSetLabel, DataSetLayoutProperties props) {
 		 //Overall this is very similar to any other plotting method.
 		 //We first need some information about the data. we know some details about it
 		 
@@ -573,6 +574,12 @@ public class BarChartContainerLayout extends ContainerLayout {
 		 }
 		 
 	 }
+
+	@Override
+	public void updateLabel(String DatasetLabel) {
+		// TODO Auto-generated method stub
+		labelForDataSet.Label = DatasetLabel;
+	}
 	 
 }
 

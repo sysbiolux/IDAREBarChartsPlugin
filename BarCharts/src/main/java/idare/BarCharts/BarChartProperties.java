@@ -66,16 +66,6 @@ public class BarChartProperties extends DataSetLayoutProperties {
 
 	/*
 	 * (non-Javadoc)
-	 * @see idare.imagenode.Interfaces.Layout.DataSetProperties#newContainerForData(idare.imagenode.Interfaces.DataSets.NodeData)
-	 */
-	@Override
-	public DataContainer newContainerForData(NodeData data) {
-		// TODO Auto-generated method stub
-		return new BarChartContainer(data.getDataSet(), data);
-	}
-
-	/*
-	 * (non-Javadoc)
 	 * @see idare.imagenode.Interfaces.Layout.DataSetProperties#getTypeName()
 	 */
 	@Override
