@@ -8,7 +8,7 @@
 		<cytoscape.api.version>3.4.0</cytoscape.api.version>
 		<maven-bundle-plugin.version>3.2.0</maven-bundle-plugin.version>
 		<osgi.api.version>4.2.0</osgi.api.version>
-		<Cytoscape-App-Dependencies>IDARE;1.0</Cytoscape-App-Dependencies>
+		<Cytoscape-App-Dependencies>IDARE [idare];1.0</Cytoscape-App-Dependencies>
 	</properties>
 
 
