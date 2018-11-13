@@ -12,6 +12,7 @@ import idare.imagenode.Interfaces.Layout.ContainerLayout;
 import idare.imagenode.Interfaces.Layout.DataSetLayoutProperties;
 import idare.imagenode.Utilities.LayoutUtils;
 import idare.imagenode.Utilities.LegendLabel;
+import idare.imagenode.exceptions.layout.WrongDatasetTypeException;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -145,7 +146,7 @@ public class BarChartContainerLayout extends ContainerLayout {
 		 // TODO Auto-generated constructor stub
 	 }
 	 @Override	
-	 public void setupLayout(NodeData data, Rectangle area, String DataSetLabel, DataSetLayoutProperties props) {
+	 public void setupLayout(NodeData data, Rectangle area, String DataSetLabel, DataSetLayoutProperties props) throws WrongDatasetTypeException {
 		 //Overall this is very similar to any other plotting method.
 		 //We first need some information about the data. we know some details about it
 		 
